@@ -1,0 +1,3558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الاتصال المؤسسي الاستراتيجي | Strategic Corporate Communication</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2c5282;
+      --secondary: #c9a227;
+      --accent: #e07b39;
+      --bg: #f7fafc;
+      --card-bg: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --success: #38a169;
+      --info: #3182ce;
+      --warning: #d69e2e;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    
+    /* Sidebar Navigation */
+    .sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--primary);
+      overflow-y: auto;
+      z-index: 1000;
+      padding: 20px 0;
+    }
+    
+    .sidebar-header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .sidebar-header h1 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    
+    .sidebar-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+    }
+    
+    .nav-menu {
+      list-style: none;
+      padding: 15px 0;
+    }
+    
+    .nav-menu li {
+      margin: 2px 0;
+    }
+    
+    .nav-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      transition: all 0.3s;
+      border-right: 3px solid transparent;
+    }
+    
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      background: rgba(255,255,255,0.1);
+      border-right-color: var(--secondary);
+      color: white;
+    }
+    
+    .nav-menu .unit-num {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: var(--secondary);
+      color: var(--primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      margin-left: 10px;
+      font-size: 0.85rem;
+    }
+
+    /* Test Link in Sidebar */
+    .nav-menu .test-link {
+      margin-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 15px;
+    }
+
+    .nav-menu .test-link a {
+      background: linear-gradient(135deg, var(--accent) 0%, #c05621 100%);
+      border-right-color: var(--secondary);
+      font-weight: bold;
+    }
+
+    .nav-menu .test-link a:hover {
+      background: linear-gradient(135deg, #c05621 0%, var(--accent) 100%);
+    }
+
+    .nav-menu .test-icon {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: white;
+      color: var(--accent);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      margin-left: 10px;
+      font-size: 0.85rem;
+    }
+    
+    /* Main Content */
+    .main-content {
+      margin-right: 280px;
+      min-height: 100vh;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .hero .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+    
+    .hero .en-title {
+      font-size: 1rem;
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    /* CTA Button in Hero */
+    .hero-cta {
+      margin-top: 30px;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--accent) 0%, #c05621 100%);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(224, 123, 57, 0.4);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(224, 123, 57, 0.5);
+    }
+
+    .btn-cta .icon {
+      font-size: 1.3rem;
+    }
+    
+    /* Unit Section - Modified for single unit display */
+    .unit-section {
+      padding: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: none; /* Hidden by default */
+    }
+
+    .unit-section.active {
+      display: block; /* Show only active unit */
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .unit-header {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border-right: 5px solid var(--secondary);
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .section-number {
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .section-ar {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .section-en {
+      font-size: 1rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    
+    .subtitle {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    
+    .card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+    }
+    
+    .subcard {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .subcard h4 {
+      color: var(--primary-light);
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    
+    /* Info Box */
+    .info-box {
+      background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+      border-right: 4px solid var(--info);
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    
+    .info-box b {
+      color: var(--primary);
+    }
+    
+    /* Diagram */
+    .diagram {
+      background: #1a202c;
+      color: #68d391;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+      margin: 15px 0;
+    }
+    
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    
+    .table th {
+      background: var(--primary);
+      color: white;
+      padding: 12px 15px;
+      text-align: right;
+    }
+    
+    .table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .table tr:nth-child(even) {
+      background: var(--bg);
+    }
+    
+    .table tr:hover {
+      background: #ebf8ff;
+    }
+    
+    /* Lists */
+    ul, ol {
+      padding-right: 25px;
+      margin: 15px 0;
+    }
+    
+    li {
+      margin-bottom: 8px;
+    }
+    
+    /* Quiz */
+    .quiz {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 25px;
+    }
+    
+    .q {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    
+    .q h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .opts {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .opts li {
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      background: var(--bg);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .opts li:hover {
+      background: #ebf8ff;
+    }
+    
+    .ans {
+      margin-top: 15px;
+      background: #f0fff4;
+      border: 1px solid var(--success);
+      border-radius: 6px;
+      padding: 15px;
+    }
+    
+    .ans summary {
+      cursor: pointer;
+      color: var(--success);
+      font-weight: bold;
+    }
+    
+    /* Infographic Slot */
+    .infographic-slot {
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      margin: 30px 0;
+    }
+    
+    .infographic-slot img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    .infographic-slot::before {
+      content: " الإنفوجرافيك 📊 Infographic";
+      display: block;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px;
+      margin-top: 50px;
+    }
+    
+    .footer p {
+      margin: 5px 0;
+      font-size: 1.1rem;
+    }
+    
+    /* Scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: var(--secondary);
+      color: var(--primary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      z-index: 999;
+    }
+    
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .sidebar {
+        width: 240px;
+      }
+      .main-content {
+        margin-right: 240px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .main-content {
+        margin-right: 0;
+      }
+      .unit-section {
+        padding: 20px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn-cta {
+        padding: 14px 24px;
+        font-size: 1rem;
+      }
+    }
+    
+    /* Print styles */
+    @media print {
+      .sidebar, .scroll-top {
+        display: none;
+      }
+      .main-content {
+        margin-right: 0;
+      }
+      .unit-section {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h1>الاتصال المؤسسي الاستراتيجي</h1>
+      <p>Strategic Corporate Communication</p>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#unit-1" data-unit="unit-1"><span class="unit-num">1</span>مقدمة ومفاهيم أساسية</a></li>
+      <li><a href="#unit-2" data-unit="unit-2"><span class="unit-num">2</span>التواصل الاستراتيجي</a></li>
+      <li><a href="#unit-3" data-unit="unit-3"><span class="unit-num">3</span>تنمية القدرات الاتصالية</a></li>
+      <li><a href="#unit-4" data-unit="unit-4"><span class="unit-num">4</span>التغلب على الحواجز</a></li>
+      <li><a href="#unit-5" data-unit="unit-5"><span class="unit-num">5</span>السياق السعودي</a></li>
+      <li><a href="#unit-6" data-unit="unit-6"><span class="unit-num">6</span>المقاييس والمؤشرات</a></li>
+      <li><a href="#unit-7" data-unit="unit-7"><span class="unit-num">7</span>الإطار العام للاستراتيجية</a></li>
+      <li><a href="#unit-8" data-unit="unit-8"><span class="unit-num">8</span>تطوير الأهداف SMART</a></li>
+      <li><a href="#unit-9" data-unit="unit-9"><span class="unit-num">9</span>خطة الاتصال الداخلي</a></li>
+      <li><a href="#unit-10" data-unit="unit-10"><span class="unit-num">10</span>عناصر تطوير الاتصال الداخلي</a></li>
+      <li><a href="#unit-11" data-unit="unit-11"><span class="unit-num">11</span>خطة الاتصال الخارجي</a></li>
+      <li><a href="#unit-12" data-unit="unit-12"><span class="unit-num">12</span>عناصر تطوير الاتصال الخارجي</a></li>
+      <li><a href="#unit-13" data-unit="unit-13"><span class="unit-num">13</span>التطبيق والتقييم</a></li>
+      <li class="test-link"><a href="test SCC.html" id="sidebar-test-link"><span class="test-icon">📝</span>الاختبار النهائي | Final Test</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>الاتصال المؤسسي الاستراتيجي</h1>
+      <p class="subtitle">Strategic Corporate Communication</p>
+      <p class="en-title">Complete Professional Diploma - 13 Units</p>
+      <div class="hero-cta">
+        <a href="test SCC.html" class="btn-cta" id="hero-test-link">
+          <span class="icon">📝</span>
+          <span>الاختبار النهائي | Final Test</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- UNIT 1 -->
+    <section id="unit-1" class="unit-section" data-unit="unit-1">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">1</span>
+          <span class="section-ar">مقدمة في الاتصال المؤسسي الاستراتيجي</span>
+          <span class="section-en">Introduction to Strategic Corporate Communication</span>
+        </h2>
+        <p class="subtitle">الهدف: فهم أساسيات الاتصال المؤسسي الاستراتيجي (Strategic Corporate Communication) وأهميته في تحقيق الأهداف المؤسسية.</p>
+      </header>
+
+      <div class="card">
+        <h3>1.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <h4>الفكرة المحورية</h4>
+          <p>الاتصال المؤسسي الاستراتيجي (Strategic Corporate Communication) ليس مجرد نقل معلومات، بل هو أداة إدارية قوية تربط بين رؤية المؤسسة (Vision) وأهدافها الاستراتيجية (Strategic Objectives) من جهة، وجمهورها الداخلي والخارجي من جهة أخرى.</p>
+          <div class="info-box">
+            <b>قاعدة CMI الامتحانية:</b> في الامتحان، الإجابة القوية تظهر الفرق بين "التواصل التشغيلي" (Operational Communication) و"التواصل الاستراتيجي" (Strategic Communication).
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>1.2 تعريف الاتصال المؤسسي الاستراتيجي: CMI تعريف</h3>
+        <div class="subcard">
+          <h4>التعريف</h4>
+          <p>الاتصال المؤسسي الاستراتيجي (Strategic Corporate Communication) هو إطار منهجي يخطط وينفذ ويدير الرسائل والقنوات الاتصالية بما يخدم الأهداف الاستراتيجية للمؤسسة، ويربط بين الإدارة وجمهورها الداخلي والخارجي.</p>
+          <div class="info-box">
+            <b>Trap:</b> حصر الاتصال المؤسسي في "العلاقات العامة" (Public Relations) أو "التسويق" (Marketing) فقط.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>1.3 الفرق بين الاتصال التقليدي والاتصال الاستراتيجي</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>العنصر</th>
+                  <th>الاتصال الاستراتيجي (Strategic)</th>
+                  <th>الاتصال التشغيلي (Operational)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>الهدف</b></td>
+                  <td>دعم رؤية المؤسسة</td>
+                  <td>إتمام المهام اليومية</td>
+                </tr>
+                <tr>
+                  <td><b>المدى الزمني</b></td>
+                  <td>طويل المدى</td>
+                  <td>قصير المدى</td>
+                </tr>
+                <tr>
+                  <td><b>القيمة</b></td>
+                  <td>تغيير السلوك + بناء السمعة</td>
+                  <td>كفاءة تنفيذية</td>
+                </tr>
+                <tr>
+                  <td><b>التركيز</b></td>
+                  <td>إداري/استراتيجي</td>
+                  <td>خدمي</td>
+                </tr>
+                <tr>
+                  <td><b>القناة</b></td>
+                  <td>حملات – خطط</td>
+                  <td>بريد – اجتماعات</td>
+                </tr>
+                <tr>
+                  <td><b>المخرجات</b></td>
+                  <td>نتائج – تأثير – سلوك</td>
+                  <td>رسائل</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>1.4 أهمية الاتصال المؤسسي الاستراتيجي</h3>
+        <div class="subcard">
+          <ul>
+            <li>بناء السمعة المؤسسية (Corporate Reputation)</li>
+            <li>زيادة الوعي بالعلامة التجارية (Brand Awareness)</li>
+            <li>تحسين العلاقات مع أصحاب المصلحة (Stakeholder Relations)</li>
+            <li>دعم التحولات المؤسسية (Change Management)</li>
+            <li>تعزيز الثقة والولاء (Trust & Loyalty)</li>
+            <li>إدارة الأزمات بفعالية (Crisis Management)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>1.5 مكونات الاتصال المؤسسي الاستراتيجي</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>الاتصال الداخلي (Internal Communication)</b>: تواصل المؤسسة مع موظفيها</li>
+            <li><b>الاتصال الخارجي (External Communication)</b>: تواصل المؤسسة مع جمهورها الخارجي</li>
+            <li><b>إدارة السمعة (Reputation Management)</b>: بناء وحماية صورة المؤسسة</li>
+            <li><b>العلاقات العامة (Public Relations)</b>: التفاعل مع الإعلام والمجتمع</li>
+            <li><b>الاتصال في الأزمات (Crisis Communication)</b>: إدارة الاتصال أثناء الأزمات</li>
+          </ul>
+          <div class="diagram">
+[ Internal Communication ] ⇄ [ External Communication ]
+         ↓                           ↓
+    [ Corporate Reputation Management ]
+         ↓
+[ Stakeholder Trust & Loyalty ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>1.6 مبادئ الاتصال المؤسسي الفعّال</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>Intentionality (النية والتعمد)</b>: كل رسالة يجب أن تخدم هدفًا استراتيجيًا</li>
+            <li><b>Integration (التكامل)</b>: دمج جميع قنوات الاتصال</li>
+            <li><b>Consistency (الاتساق)</b>: توحيد الرسائل عبر جميع القنوات</li>
+            <li><b>Outcome Orientation (التوجه نحو النتائج)</b>: قياس الأثر وليس فقط النشاط</li>
+            <li><b>Sustainability (الاستدامة)</b>: استمرارية الاتصال على المدى الطويل</li>
+          </ul>
+          <div class="diagram">
+        [ Intentionality ]
+               │
+               ▼
+[ Integration ] ─────► [ Consistency ]
+               │                │
+               ▼                ▼
+    [ Outcome Orientation ] ──► [ Sustainability ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>1.7 Key Takeaways – ملخص الوحدة الأولى</h3>
+        <div class="subcard">
+          <ul>
+            <li>الاتصال المؤسسي الاستراتيجي (Strategic Corporate Communication) يربط الرؤية بالأداء.</li>
+            <li>الاستراتيجي ≠ التشغيلي؛ الأول يركز على الأثر طويل المدى.</li>
+            <li>الاتصال الداخلي والخارجي يجب أن يكونا متكاملين (Integrated).</li>
+            <li>النية (Intentionality) والاتساق (Consistency) أساس النجاح.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit1.png" alt="Unit 1 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 2 -->
+    <section id="unit-2" class="unit-section" data-unit="unit-2">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">2</span>
+          <span class="section-ar">التواصل الاستراتيجي - التخطيط والرسائل</span>
+          <span class="section-en">Strategic Communication – Planning & Messaging</span>
+        </h2>
+        <p class="subtitle">الهدف: إتقان نموذج SOSTAC® لبناء خطط اتصال استراتيجية، وبناء رسائل واضحة ومؤثرة.</p>
+      </header>
+
+      <div class="card">
+        <h3>2.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <p>تركز هذه الوحدة على التخطيط الاستراتيجي للاتصال (Strategic Communication Planning) وبناء الرسائل (Message Development) باستخدام نماذج عالمية معتمدة من CMI وCIPR.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.2 الإطار العالمي للتواصل الاستراتيجي: نموذج SOSTAC®</h3>
+        <div class="subcard">
+          <p>نموذج SOSTAC® هو إطار تخطيط استراتيجي معتمد من CMI وCIPR وCIM، يتكون من 6 عناصر:</p>
+          <ul>
+            <li><b>S – Situation Analysis</b>: تحليل الوضع الحالي (SWOT, PESTLE, تحليل الجمهور)</li>
+            <li><b>O – Objectives</b>: الأهداف (SMART – KPIs – Outcomes)</li>
+            <li><b>S – Strategy</b>: الاستراتيجية (الجمهور، الرسائل، التموضع)</li>
+            <li><b>T – Tactics</b>: التكتيكات (القنوات، المحتوى، الجداول الزمنية)</li>
+            <li><b>A – Action</b>: التنفيذ (توزيع المهام والموارد)</li>
+            <li><b>C – Control</b>: الرقابة (القياس، التقارير، التحسين)</li>
+          </ul>
+          <div class="diagram">
+[ Situation Analysis ]
+         │
+         ▼
+[ Objectives ]
+         │
+         ▼
+[ Strategy ]
+         │
+         ▼
+[ Tactics ]
+         │
+         ▼
+[ Action ]
+         │
+         ▼
+[ Control ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.3 بناء الرسائل الاستراتيجية (Strategic Messaging)</h3>
+        <div class="subcard">
+          <h4>أهم مكونات الرسائل الاستراتيجية:</h4>
+          <ul>
+            <li><b>Umbrella Message</b>: الرسالة الرئيسية (الفكرة الجامعة)</li>
+            <li><b>Supporting Messages</b>: الرسائل الداعمة</li>
+            <li><b>Proof Points</b>: الأدلة والبراهين</li>
+            <li><b>CTA</b>: الدعوة للإجراء</li>
+          </ul>
+          <div class="diagram">
+         [ Umbrella Message ]
+    ┌──────────┬──────────┬──────────┐
+    │ Supporting │ Supporting │ Supporting │
+    │ Messages   │ Messages   │ Messages   │
+    └─────┬──────┴─────┬──────┴─────┬──────┘
+          │            │            │
+    [ Proof Points ] [ Proof Points ] [ Proof Points ]
+              ↓
+           [ CTA ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.4 خصائص الرسالة الاستراتيجية الناجحة</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الخاصية</th>
+                  <th>الوصف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Clarity (وضوح)</b></td>
+                  <td>سهلة الفهم، غير طويلة</td>
+                </tr>
+                <tr>
+                  <td><b>Brevity (اختصار)</b></td>
+                  <td>مختصرة ومباشرة</td>
+                </tr>
+                <tr>
+                  <td><b>Consistency (اتساق)</b></td>
+                  <td>موحدة عبر كل القنوات</td>
+                </tr>
+                <tr>
+                  <td><b>Relevance (ملاءمة)</b></td>
+                  <td>تناسب الجمهور المستهدف</td>
+                </tr>
+                <tr>
+                  <td><b>Memorable (قابلية للتذكر)</b></td>
+                  <td>يمكن استدعاؤها بسرعة</td>
+                </tr>
+                <tr>
+                  <td><b>Credibility (مصداقية)</b></td>
+                  <td>مبنية على حقائق وأدلة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.5 التقسيم الاستراتيجي للجمهور (Strategic Audience Segmentation)</h3>
+        <div class="subcard">
+          <p>ينقسم الجمهور الاستراتيجي إلى:</p>
+          <ul>
+            <li><b>داخلي (Internal)</b>: موظفون – قادة – شركاء – متدربون</li>
+            <li><b>خارجي (External)</b>: عملاء – مجتمع – جهات حكومية – إعلام – شركاء أعمال</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الفئة</th>
+                  <th>خصائص</th>
+                  <th>أفضل القنوات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>الموظفون</b></td>
+                  <td>يحتاجون للوضوح والتمكين</td>
+                  <td>WhatsApp Business – Meetings</td>
+                </tr>
+                <tr>
+                  <td><b>العملاء</b></td>
+                  <td>يبحثون عن قيمة وجودة</td>
+                  <td>Social Media – Email</td>
+                </tr>
+                <tr>
+                  <td><b>الجهات الحكومية</b></td>
+                  <td>تحتاج احترافية ودقة</td>
+                  <td>تقارير رسمية – خطابات – لقاءات</td>
+                </tr>
+                <tr>
+                  <td><b>الإعلام</b></td>
+                  <td>سريع – نقدي</td>
+                  <td>بيانات صحفية – تصريح متحدث</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.6 نموذج التكامل الاتصالي (Integrated Communication Model)</h3>
+        <div class="subcard">
+          <p>الدمج بين: التسويق (Marketing) – العلاقات العامة (PR) – الاتصال المؤسسي (CC) – الاتصال الداخلي (IC) – الهوية البصرية (BI)</p>
+          <div class="diagram">
+    [ Marketing ]
+         │
+[ PR ]────┼────[ Corporate Communication ]
+         │
+    [ Internal Communication ]
+              ↓
+       [ One Voice ]
+          </div>
+          <div class="info-box">
+            <b>النتيجة:</b> صوت مؤسسي واحد (One Voice) ورسائل موحدة (Unified Messaging)
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.7 إدارة الاتصال أثناء التغيير المؤسسي (Change Communication)</h3>
+        <div class="subcard">
+          <p>يعتمد على نموذج ADKAR:</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المرحلة</th>
+                  <th>سؤال الموظف</th>
+                  <th>دور الاتصال</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Awareness (الوعي)</b></td>
+                  <td>لماذا نغيّر؟</td>
+                  <td>توضيح الأسباب وتعزيز الدافع</td>
+                </tr>
+                <tr>
+                  <td><b>Desire (الرغبة)</b></td>
+                  <td>ما الفائدة لي؟</td>
+                  <td>تحفيز – إبراز المنافع</td>
+                </tr>
+                <tr>
+                  <td><b>Knowledge (المعرفة)</b></td>
+                  <td>كيف سنفعلها؟</td>
+                  <td>تدريب – توضيح الأدوات</td>
+                </tr>
+                <tr>
+                  <td><b>Ability (القدرة)</b></td>
+                  <td>هل أستطيع؟</td>
+                  <td>دعم مباشر – موارد</td>
+                </tr>
+                <tr>
+                  <td><b>Reinforcement (التعزيز)</b></td>
+                  <td>كيف نضمن الاستمرار؟</td>
+                  <td>مكافآت – متابعة – تقييم</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.8 قياس فعالية التواصل الاستراتيجي (KPIs & Metrics)</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>Outputs (المخرجات)</b>: عدد المنشورات – عدد الرسائل – عدد الحملات</li>
+            <li><b>Outcomes (النتائج)</b>: المشاهدات – التفاعل – معدل الفتح – الحضور</li>
+            <li><b>Impact (الأثر)</b>: السلوك – السمعة – رضا الموظفين – المبيعات</li>
+          </ul>
+          <div class="diagram">
+         [ Impact ]
+    [ Outcomes ]
+[ Outputs ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2.9 Key Takeaways – ملخص الوحدة الثانية</h3>
+        <div class="subcard">
+          <ul>
+            <li>التواصل الاستراتيجي ≠ التواصل التشغيلي</li>
+            <li>الرسائل الموحدة = سمعة قوية</li>
+            <li>التخطيط باستخدام SOSTAC® أساس النجاح</li>
+            <li>التكامل الاتصالي ضرورة وليس خيارًا</li>
+            <li>كل رسالة يجب أن تخدم هدفًا استراتيجيًا</li>
+            <li>قياس الأداء أساس التحسين المستمر</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit2.png" alt="Unit 2 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 3 -->
+    <section id="unit-3" class="unit-section" data-unit="unit-3">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">3</span>
+          <span class="section-ar">تنمية وتطوير الاتصال المؤسسي</span>
+          <span class="section-en">Building Corporate Communication Capability</span>
+        </h2>
+        <p class="subtitle">الهدف: بناء قدرات اتصالية مؤسسية متطورة عبر المهارات والثقافة والهياكل.</p>
+      </header>
+
+      <div class="card">
+        <h3>3.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <p>لا يمكن لأي استراتيجية اتصال ناجحة أن تُنفّذ بفعالية دون وجود قدرات اتصالية مؤسسية متطورة. تشمل القدرات الاتصالية (Communication Competencies):</p>
+          <ul>
+            <li>البنية المؤسسية للاتصال (Communication Structure)</li>
+            <li>مهارات العاملين في الاتصال (Communication Skills)</li>
+            <li>الثقافة التنظيمية الداعمة للتواصل (Communication Culture)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3.2 تقييم فعالية التواصل الحالي (Communication Audit)</h3>
+        <div class="subcard">
+          <p>التشخيص قبل العلاج: Communication Audit = أين نحن الآن؟ أين نريد أن نكون؟</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المكوّن</th>
+                  <th>الأدوات المستخدمة</th>
+                  <th>الأسئلة الرئيسية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>تحليل الفجوة (Gap Analysis)</b></td>
+                  <td>SWOT – Surveys</td>
+                  <td>أين نحن؟ أين نريد أن نكون؟</td>
+                </tr>
+                <tr>
+                  <td><b>تحليل الشبكات (ONA)</b></td>
+                  <td>Organizational Network Analysis</td>
+                  <td>من يسيطر على تدفق المعلومات؟</td>
+                </tr>
+                <tr>
+                  <td><b>تحليل القنوات (Channel Analysis)</b></td>
+                  <td>Channel Scorecard</td>
+                  <td>ما أكثر القنوات فعالية؟</td>
+                </tr>
+                <tr>
+                  <td><b>تحليل الرسائل (Message Audit)</b></td>
+                  <td>Content Review Sheets</td>
+                  <td>هل الرسائل واضحة ومتناسقة؟</td>
+                </tr>
+                <tr>
+                  <td><b>تحليل الثقافة (Culture Audit)</b></td>
+                  <td>Pulse Survey – Focus Groups</td>
+                  <td>هل هناك شفافية؟ هل الموظفون يعبرون؟</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3.3 تحليل الشبكات التنظيمية (ONA - Organizational Network Analysis)</h3>
+        <div class="subcard">
+          <p>هو تحليل لمعرفة "كيف تنتقل المعلومات فعليًا داخل المؤسسة"، وليس كيف يفترض أن تنتقل وفق الهيكل الرسمي.</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المؤشر</th>
+                  <th>الوصف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Centrality</b></td>
+                  <td>مقدار تأثير الموظف</td>
+                </tr>
+                <tr>
+                  <td><b>Density</b></td>
+                  <td>كثافة الشبكة</td>
+                </tr>
+                <tr>
+                  <td><b>Isolated Nodes</b></td>
+                  <td>أفراد خارج الشبكة</td>
+                </tr>
+                <tr>
+                  <td><b>Gatekeepers</b></td>
+                  <td>من يتحكم في المعلومات</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3.4 تطوير مهارات التواصل لدى الموظفين (Communication Skills Development)</h3>
+        <div class="subcard">
+          <h4>المهارات الأساسية وفق CMI:</h4>
+          <ul>
+            <li><b>الذكاء العاطفي (Emotional Intelligence - EQ)</b>: يشمل الوعي الذاتي، إدارة المشاعر، التعاطف، التواصل غير اللفظي</li>
+            <li><b>مهارات السرد القصصي (Storytelling)</b>: عناصر القصة المؤسسية (المشكلة – الحل – البطل – الرحلة – النتيجة)</li>
+            <li><b>التواصل الرقمي (Digital Communication Skills)</b>: Email Etiquette، استخدام منصات Teams – Slack</li>
+            <li><b>التواصل في الاجتماعات (Meetings Communication)</b>: إدارة النقاش، تلخيص الأفكار، اتخاذ القرارات</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3.5 دور الثقافة التنظيمية في تعزيز التواصل المؤسسي</h3>
+        <div class="subcard">
+          <p>الثقافة التنظيمية هي "نظام التشغيل" الذي يعمل عليه الاتصال. لا يمكن للتواصل أن يكون فعّالاً إذا كانت الثقافة:</p>
+          <ul>
+            <li>تقوم على الخوف</li>
+            <li>تفتقر للشفافية</li>
+            <li>لا تسمح بالمشاركة</li>
+            <li>تعتمد على السلطة بشكل مفرط</li>
+          </ul>
+          <h4>أنواع الثقافات المؤثرة على التواصل:</h4>
+          <ul>
+            <li><b>ثقافة الحجب (Hoarding Culture)</b>: المعلومات = سلطة، المديرون يحتفظون بالمعلومات لأنفسهم</li>
+            <li><b>ثقافة المشاركة (Sharing Culture)</b>: تشجع على التعاون ونقل المعرفة، المعلومة متاحة للجميع</li>
+            <li><b>ثقافة الصوامع (Silos Culture)</b>: الأقسام تعمل كجزر منعزلة</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3.6 القائد الاتصالي: حجر الأساس في بناء القدرات</h3>
+        <div class="subcard">
+          <p>80% من نجاح التواصل الداخلي يعتمد على القائد الاتصالي (Communication Leader):</p>
+          <ul>
+            <li>الاستماع الفعّال (Active Listening)</li>
+            <li>التوجيه الواضح (Clear Direction)</li>
+            <li>إدارة المواقف الصعبة (Difficult Conversations)</li>
+            <li>التحفيز (Motivation)</li>
+            <li>إلهام الفريق (Inspiration)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3.7 نموذج النضج الاتصالي (CCMM - Communication Capability Maturity Model)</h3>
+        <div class="subcard">
+          <p>5 مستويات للنضج الاتصالي داخل المؤسسة:</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المستوى</th>
+                  <th>الوصف</th>
+                  <th>الخصائص</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Level 1 – Informal</b></td>
+                  <td>اتصال فوضوي</td>
+                  <td>لا توجد قنوات رسمية</td>
+                </tr>
+                <tr>
+                  <td><b>Level 2 – Basic</b></td>
+                  <td>رسائل موحدة</td>
+                  <td>توجد قنوات لكنها غير منسقة</td>
+                </tr>
+                <tr>
+                  <td><b>Level 3 – Structured</b></td>
+                  <td>سياسات وخطط</td>
+                  <td>تخطيط استراتيجي</td>
+                </tr>
+                <tr>
+                  <td><b>Level 4 – Integrated</b></td>
+                  <td>تكامل بين الأقسام</td>
+                  <td>قياس وتحسين مستمر</td>
+                </tr>
+                <tr>
+                  <td><b>Level 5 – Optimized</b></td>
+                  <td>مؤسسة رائدة</td>
+                  <td>أفضل الممارسات العالمية</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3.8 Key Takeaways – ملخص الوحدة الثالثة</h3>
+        <div class="subcard">
+          <ul>
+            <li>بناء القدرات الاتصالية أساس نجاح أي استراتيجية اتصال</li>
+            <li>التشخيص → تطوير مهارات → بناء ثقافة → تحسين مستمر</li>
+            <li>الثقافة التنظيمية قد ترفع أو تهدم فعالية التواصل</li>
+            <li>القائد الاتصالي هو أهم عنصر في تطوير التواصل الداخلي</li>
+            <li>أداة ONA قوية لكشف "تدفق المعلومات الحقيقي" داخل المؤسسة</li>
+            <li>نموذج CCMM يساعد في معرفة مستوى النضج الاتصالي</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit3.png" alt="Unit 3 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 4 -->
+    <section id="unit-4" class="unit-section" data-unit="unit-4">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">4</span>
+          <span class="section-ar">التغلب على الحواجز في الاتصال - إدارة التغيير والتنوع</span>
+          <span class="section-en">Overcoming Communication Barriers – Change & Diversity Management</span>
+        </h2>
+        <p class="subtitle">الهدف: تشخيص الحواجز الاتصالية وتجاوزها باستخدام نماذج ADKAR وCQ.</p>
+      </header>
+
+      <div class="card">
+        <h3>4.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <p>60% من الإخفاقات الاستراتيجية سببها سوء الاتصال، وليس ضعف الخطط. الحواجز قد تكون:</p>
+          <ul>
+            <li>تنظيمية (Organizational)</li>
+            <li>تقنية (Technical)</li>
+            <li>لغوية/ثقافية (Cultural & Linguistic)</li>
+            <li>نفسية (Psychological)</li>
+            <li>مرتبطة بمقاومة التغيير (Change Resistance)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>4.2 النموذج الشامل لحواجز الاتصال (CMI Barrier Model)</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>نوع الحاجز</th>
+                  <th>الوصف</th>
+                  <th>النتائج</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>تنظيمية (Organizational)</b></td>
+                  <td>هياكل معقدة، بيروقراطية، صوامع</td>
+                  <td>بطء – تشويه – فقدان رسائل</td>
+                </tr>
+                <tr>
+                  <td><b>تقنية (Technical)</b></td>
+                  <td>أدوات ضعيفة – مسافات – ضوضاء</td>
+                  <td>انقطاع اتصال – رسائل غير دقيقة</td>
+                </tr>
+                <tr>
+                  <td><b>لغوية/ثقافية (Cultural)</b></td>
+                  <td>لغات متعددة – اختلاف قيم – Jargon</td>
+                  <td>سوء فهم – صمت</td>
+                </tr>
+                <tr>
+                  <td><b>نفسية (Psychological)</b></td>
+                  <td>خوف – تحيز – ضعف ثقة</td>
+                  <td>عدم مشاركة الموظفين</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>4.3 حواجز الاتصال في المؤسسات السعودية (Saudi Context)</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>تنوع القوى العاملة (Multicultural Workforce)</b>: وجود موظفين من أكثر من 20 جنسية → اختلاف في اللغة وأسلوب العمل</li>
+            <li><b>البيروقراطية في المؤسسات الكبيرة</b>: المسارات الطويلة للقرارات</li>
+            <li><b>الحساسية الثقافية</b>: السعودية مجتمع "سياق عالٍ" (High-Context) → الإيحاءات أكثر من المباشرة</li>
+            <li><b>الاعتماد على الواتساب</b>: رغم فعاليته، قد يسبب تشتت معلومات غير رسمية</li>
+            <li><b>الخوف من التعبير أمام الإدارة</b>: ثقافة "عدم إزعاج المدير"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>4.4 التقنيات العلمية لتجاوز الحواجز</h3>
+        <div class="subcard">
+          <h4>1. تجاوز الحواجز التنظيمية:</h4>
+          <ul>
+            <li>تبسيط المسارات الاتصالية</li>
+            <li>إنشاء "مكتب الاتصال المؤسسي"</li>
+            <li>وضع سياسات واضحة لقنوات الاتصال</li>
+            <li>اعتماد نموذج One Source of Truth</li>
+          </ul>
+          <h4>2. تجاوز الحواجز التقنية:</h4>
+          <ul>
+            <li>الاستثمار في نظام اتصال موحد (UC)</li>
+            <li>تطوير الإنترانت</li>
+            <li>تدريب الموظفين على الأدوات الرقمية</li>
+          </ul>
+          <h4>3. تجاوز الحواجز اللغوية والثقافية:</h4>
+          <ul>
+            <li>تدريب الذكاء الثقافي (CQ)</li>
+            <li>التوطين (Localization)</li>
+            <li>استخدام لغة مفهومة بعيداً من المصطلحات الثقيلة</li>
+            <li>مراعاة حساسية القيم والاختلافات الثقافية</li>
+          </ul>
+          <h4>4. تجاوز الحواجز النفسية:</h4>
+          <ul>
+            <li>بناء الثقة</li>
+            <li>تطبيق "سياسة الباب المفتوح"</li>
+            <li>تشجيع الموظفين على التعبير</li>
+            <li>حماية المبلّغين (Whistleblower Protection)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>4.5 الذكاء الثقافي (CQ - Cultural Intelligence)</h3>
+        <div class="subcard">
+          <p>CQ = قدرة الموظف على التواصل والعمل بفعالية مع أشخاص من ثقافات مختلفة.</p>
+          <p><b>عناصر CQ الأربعة:</b></p>
+          <ul>
+            <li><b>Cognitive CQ</b>: معرفة ثقافات الآخرين</li>
+            <li><b>Physical CQ</b>: تكييف السلوكيات</li>
+            <li><b>Emotional CQ</b>: الارتياح للعمل مع ثقافات مختلفة</li>
+            <li><b>Strategic CQ</b>: التخطيط والتقييم أثناء التفاعل</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>البند</th>
+                  <th>High Context (مثل السعودية)</th>
+                  <th>Low Context (مثل أوروبا)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>الرسائل</b></td>
+                  <td>ضمنية – غير مباشرة</td>
+                  <td>مباشرة وواضحة</td>
+                </tr>
+                <tr>
+                  <td><b>أسلوب</b></td>
+                  <td>الاعتماد على العلاقات</td>
+                  <td>الاعتماد على النظام</td>
+                </tr>
+                <tr>
+                  <td><b>الفهم</b></td>
+                  <td>السياق أكثر من الكلمات</td>
+                  <td>الكلمات أكثر من السياق</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>4.6 تطبيق نموذج ADKAR لإدارة مقاومة التغيير</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المرحلة</th>
+                  <th>سؤال الموظف</th>
+                  <th>دور الاتصال</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Awareness (الوعي)</b></td>
+                  <td>لماذا نغيّر؟</td>
+                  <td>توضيح الأسباب</td>
+                </tr>
+                <tr>
+                  <td><b>Desire (الرغبة)</b></td>
+                  <td>ما الفائدة لي؟</td>
+                  <td>تحفيز – إبراز المنافع</td>
+                </tr>
+                <tr>
+                  <td><b>Knowledge (المعرفة)</b></td>
+                  <td>كيف سنفعلها؟</td>
+                  <td>تدريب – توضيح الأدوات</td>
+                </tr>
+                <tr>
+                  <td><b>Ability (القدرة)</b></td>
+                  <td>هل أستطيع؟</td>
+                  <td>دعم – موارد</td>
+                </tr>
+                <tr>
+                  <td><b>Reinforcement (التعزيز)</b></td>
+                  <td>هل سنستمر؟</td>
+                  <td>مكافآت – تقييم</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>4.7 Key Takeaways – ملخص الوحدة الرابعة</h3>
+        <div class="subcard">
+          <ul>
+            <li>الحواجز الاتصالية طبيعية، لكنها قابلة للإدارة والتحكم</li>
+            <li>لا يمكن للاتصال الاستراتيجي النجاح دون معالجة الحواجز التنظيمية والثقافية والنفسية</li>
+            <li>نموذج ADKAR ضروري لنجاح التغيير الاتصالي</li>
+            <li>الذكاء الثقافي (CQ) عامل أساسي في بيئات العمل السعودية</li>
+            <li>التواصل ليس فقط "ماذا نقول"، بل "كيف يفهمه الآخرون"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit4.png" alt="Unit 4 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 5 -->
+    <section id="unit-5" class="unit-section" data-unit="unit-5">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">5</span>
+          <span class="section-ar">استراتيجيات الاتصال في الشركات السعودية - السياق المحلي</span>
+          <span class="section-en">Communication Strategies in Saudi Organizations – Local Context & Vision 2030</span>
+        </h2>
+        <p class="subtitle">الهدف: بناء استراتيجيات اتصال تتوافق مع خصائص السوق السعودي ورؤية 2030.</p>
+      </header>
+
+      <div class="card">
+        <h3>5.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <p>تمثل المملكة العربية السعودية واحدة من أكثر البيئات المؤسسية ديناميكية في العالم اليوم، بفضل التحولات الضخمة التي أحدثتها رؤية 2030. يحتاج مسؤولو الاتصال إلى فهم عميق للخصوصية السعودية من حيث الثقافة، القيم، التكنولوجيا، سلوك الجمهور، ودور المؤسسات الحكومية.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>5.2 البيئة الثقافية السعودية وتأثيرها على الاتصال</h3>
+        <div class="subcard">
+          <p>السعودية تصنف ضمن ثقافات السياق العالٍ (High-Context Culture) حيث:</p>
+          <ul>
+            <li>المعنى لا يوجد في الكلمات فقط، بل في العلاقات – النبرة – التلميحات – السياق</li>
+            <li>Relationship-first Culture: الثقة تُبنى قبل الأعمال</li>
+            <li>الاتصال الوجاهي مهم جدًا</li>
+            <li>الرموز والقيم لها تأثير كبير في فهم الرسائل</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>العنصر الثقافي</th>
+                  <th>تأثيره على الاتصال</th>
+                  <th>توصية استراتيجية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>High Context (السياق العالٍ)</b></td>
+                  <td>الرسائل غير المباشرة</td>
+                  <td>استخدم وضوح + لباقة</td>
+                </tr>
+                <tr>
+                  <td><b>الشبابية</b></td>
+                  <td>70% تحت 35 عاماً</td>
+                  <td>Mobile-First Strategy</td>
+                </tr>
+                <tr>
+                  <td><b>الأهمية الاجتماعية للعلاقات</b></td>
+                  <td>الثقة قبل الرسالة</td>
+                  <td>بناء علاقات مستمرة</td>
+                </tr>
+                <tr>
+                  <td><b>تعدد اللغات</b></td>
+                  <td>محتوى متعدد اللغات</td>
+                  <td>تواؤم المحتوى مع القيم</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>5.3 التحول الرقمي وتأثيره على الاتصال المؤسسي في السعودية</h3>
+        <div class="subcard">
+          <p>السعودية دولة Digital-First، وأكثر حملات الاتصال نجاحًا تعتمد على:</p>
+          <ul>
+            <li>التواصل Mobile-First</li>
+            <li>منصات التواصل الاجتماعي</li>
+            <li>البيانات المفتوحة</li>
+            <li>التطبيقات الحكومية</li>
+            <li>الأتمتة والذكاء الاصطناعي</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المنصة</th>
+                  <th>نسبة الاستخدام</th>
+                  <th>دورها الاتصالي</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>WhatsApp</b></td>
+                  <td>الأكثر استخداماً</td>
+                  <td>اتصال فوري داخلي/خارجي</td>
+                </tr>
+                <tr>
+                  <td><b>Twitter/X</b></td>
+                  <td>عالية</td>
+                  <td>منصة النقاش العام – إدارة الأزمات</td>
+                </tr>
+                <tr>
+                  <td><b>Snapchat</b></td>
+                  <td>فئة الشباب</td>
+                  <td>محتوى سريع – بصري</td>
+                </tr>
+                <tr>
+                  <td><b>Instagram</b></td>
+                  <td>عالية</td>
+                  <td>بناء العلامة التجارية – حملات تسويقية</td>
+                </tr>
+                <tr>
+                  <td><b>LinkedIn</b></td>
+                  <td>متوسطة</td>
+                  <td>B2B – التواصل المهني</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>5.4 استراتيجيات اتصال ناجحة في الشركات السعودية</h3>
+        <div class="subcard">
+          <h4>1. استراتيجية وزارة الصحة في أزمة كوفيد-19:</h4>
+          <ul>
+            <li>متحدث رسمي موحّد</li>
+            <li>شفافية كاملة</li>
+            <li>تحديث يومي</li>
+            <li>رسائل قصيرة وواضحة</li>
+            <li>استخدام تويتر بشكل رئيسي</li>
+          </ul>
+          <p><b>النتيجة:</b> اعُتبرت من أفضل نماذج إدارة الأزمات عالميًا.</p>
+          
+          <h4>2. استراتيجية STC – "المضي قدماً":</h4>
+          <ul>
+            <li>تغيير الهوية</li>
+            <li>لغة شبابية</li>
+            <li>رسائل مرتبطة برؤية 2030</li>
+            <li>حملات موحدة عبر كل القنوات</li>
+          </ul>
+          
+          <h4>3. استراتيجية مسك – تمكين الشباب:</h4>
+          <ul>
+            <li>محتوى بصري قوي</li>
+            <li>قصص نجاح</li>
+            <li>تفاعل عالي</li>
+            <li>مبادرات تعليمية واتصالية مستمرة</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>5.5 إطار الاستراتيجية الاتصالية السعودية (Saudi Communication Strategy Framework)</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>Alignment with Vision 2030</b>: مواءمة مع رؤية 2030</li>
+            <li><b>Cultural Sensitivity</b>: حساسية ثقافية</li>
+            <li><b>High Context Communication</b>: اتصال السياق العالٍ</li>
+            <li><b>Digital-First Communication</b>: الاتصال الرقمي أولاً</li>
+            <li><b>Relationship-Based Messaging</b>: رسائل قائمة على العلاقات</li>
+            <li><b>Speed + Transparency</b>: السرعة + الشفافية</li>
+            <li><b>Community Engagement</b>: مشاركة المجتمع</li>
+            <li><b>Brand Citizenship</b>: الهوية الوطنية</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>5.6 تفضيلات الجمهور السعودي في الرسائل (Audience Insights – KSA)</h3>
+        <div class="subcard">
+          <p>الجمهور السعودي يفضل الرسائل:</p>
+          <ul>
+            <li>القصيرة والمباشرة + اللطيفة</li>
+            <li>المبنية على القيم</li>
+            <li>عالية الجودة بصريًّا</li>
+            <li>المرتبطة بالوطنية</li>
+            <li>التي تقدم قيمة حقيقية</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>العنصر</th>
+                  <th>درجة الأهمية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>الوضوح</td>
+                  <td>+++++</td>
+                </tr>
+                <tr>
+                  <td>الإيجاز</td>
+                  <td>+++++</td>
+                </tr>
+                <tr>
+                  <td>الجودة البصرية</td>
+                  <td>++++</td>
+                </tr>
+                <tr>
+                  <td>المواءمة الثقافية</td>
+                  <td>+++++</td>
+                </tr>
+                <tr>
+                  <td>الإلهام</td>
+                  <td>++++</td>
+                </tr>
+                <tr>
+                  <td>القيمة العملية</td>
+                  <td>+++++</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>5.7 اتصال الأزمات في السعودية (Crisis Communication – KSA Model)</h3>
+        <div class="subcard">
+          <p><b>الركائز الأساسية:</b></p>
+          <ul>
+            <li>اعتراف مبكر</li>
+            <li>توضيح الحقائق</li>
+            <li>تحديث مستمر</li>
+            <li>قائد واحد للرسالة</li>
+            <li>استخدام تويتر كقناة رئيسية</li>
+            <li>إشراك المجتمع</li>
+            <li>تقديم حلول وليس مجرد بيانات</li>
+          </ul>
+          <div class="diagram">
+[ Detection ] → [ Verification ] → [ Statement ] → [ Updates ] → 
+[ Public Engagement ] → [ Resolution ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>5.8 Key Takeaways – ملخص الوحدة الخامسة</h3>
+        <div class="subcard">
+          <ul>
+            <li>السعودية بيئة اتصالية فريدة تتطلب فهمًا ثقافيًا عميقًا</li>
+            <li>رؤية 2030 جعلت الاتصال عنصرًا استراتيجيًا</li>
+            <li>WhatsApp + Twitter هما القناتان الأقوى اتصاليًا في المملكة</li>
+            <li>الجمهور السعودي يفضل الرسائل الواضحة، القصيرة، المرتبطة بالقيم</li>
+            <li>الشفافية وسرعة الاستجابة أهم عوامل بناء الثقة</li>
+            <li>الشركات الأكثر نجاحًا هي تلك التي توحّد رسائلها وتتكيف مع الثقافة المحلية</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit5.png" alt="Unit 5 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 6 -->
+    <section id="unit-6" class="unit-section" data-unit="unit-6">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">6</span>
+          <span class="section-ar">المقاييس الرئيسية لخطة الاتصال المؤسسي</span>
+          <span class="section-en">Corporate Communication KPIs & Measurement Frameworks</span>
+        </h2>
+        <p class="subtitle">الهدف: بناء نظام قياس شامل لقياس أثر الاتصال عبر ثلاثة مستويات: المخرجات، النتائج، والأثر.</p>
+      </header>
+
+      <div class="card">
+        <h3>6.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <p>"إذا لم يتم قياس أثرها — مهما كانت جميلة أو متقنة — لا قيمة لأي استراتيجية اتصال."</p>
+          <p>تؤكد الدراسات الحديثة من CMI, CIPR, IABC أن 70% من المؤسسات تُنفق على الاتصال ولكن أقل من 20% فقط تقيس الأثر الحقيقي.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>6.2 لماذا نقيس الاتصال؟ (Why Measure Communication)</h3>
+        <div class="subcard">
+          <ul>
+            <li>تحسين جودة المحتوى</li>
+            <li>تحديد القنوات الأكثر فاعلية</li>
+            <li>توجيه الميزانيات بشكل أفضل</li>
+            <li>دعم القرارات الاستراتيجية</li>
+            <li>إثبات قيمة الاتصال للإدارة العليا</li>
+            <li>تحويل الاتصال من نشاط "تشغيلي" إلى نشاط "استراتيجي"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>6.3 ثلاثة مستويات قياس الاتصال (Three-Level KPI Framework)</h3>
+        <div class="subcard">
+          <h4>1. المستوى الأول: مخرجات الاتصال (Outputs)</h4>
+          <p>تقيس "العمل الذي قمنا به" – مؤشرات كمية لا تعكس النتائج المرسَلة:</p>
+          <ul>
+            <li>عدد المنشورات</li>
+            <li>عدد الرسائل</li>
+            <li>عدد الحملات</li>
+            <li>حجم المحتوى</li>
+          </ul>
+          
+          <h4>2. المستوى الثاني: نتائج الاتصال (Outcomes)</h4>
+          <p>تقيس كيف استجاب الجمهور:</p>
+          <ul>
+            <li>نسبة الفتح (Open Rate)</li>
+            <li>نسبة النقر (CTR)</li>
+            <li>التفاعل (Engagement)</li>
+            <li>عدد المشاهدات</li>
+            <li>معدل حضور الاجتماعات</li>
+          </ul>
+          
+          <h4>3. المستوى الثالث: أثر الاتصال (Impact)</h4>
+          <p>تقيس السلوك – الثقافة – الأداء:</p>
+          <ul>
+            <li>زيادة رضا الموظفين</li>
+            <li>تحسين السمعة</li>
+            <li>انخفاض الشائعات</li>
+            <li>تغيّر السلوك</li>
+            <li>زيادة الإيرادات</li>
+          </ul>
+          
+          <div class="diagram">
+              [ Impact ]
+    [ Outcomes ]
+[ Outputs ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>6.4 مؤشرات الأداء الأساسية للاتصال المؤسسي (KPIs)</h3>
+        <div class="subcard">
+          <h4>1. KPIs للاتصال الداخلي:</h4>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المؤشر</th>
+                  <th>الوصف</th>
+                  <th>طريقة القياس</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Employee Engagement</b></td>
+                  <td>تفاعل الموظفين</td>
+                  <td>Surveys – النظام الداخلي</td>
+                </tr>
+                <tr>
+                  <td><b>Attendance Rate</b></td>
+                  <td>حضور الاجتماعات</td>
+                  <td>HR Reports</td>
+                </tr>
+                <tr>
+                  <td><b>Read Rate</b></td>
+                  <td>نسبة فتح الرسائل</td>
+                  <td>Email Analytics</td>
+                </tr>
+                <tr>
+                  <td><b>Participation</b></td>
+                  <td>المشاركة في المبادرات</td>
+                  <td>Analysis Tools</td>
+                </tr>
+                <tr>
+                  <td><b>Sentiment</b></td>
+                  <td>المشاعر تجاه القرارات</td>
+                  <td>Social Listening</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h4>2. KPIs للاتصال الخارجي:</h4>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المؤشر</th>
+                  <th>الوصف</th>
+                  <th>طريقة القياس</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Brand Awareness</b></td>
+                  <td>الوعي بالعلامة</td>
+                  <td>Social Listening</td>
+                </tr>
+                <tr>
+                  <td><b>Customer Engagement</b></td>
+                  <td>تفاعل العملاء</td>
+                  <td>Engagement Rate</td>
+                </tr>
+                <tr>
+                  <td><b>Media Coverage</b></td>
+                  <td>التغطية الإعلامية</td>
+                  <td>PR Reports</td>
+                </tr>
+                <tr>
+                  <td><b>Share of Voice</b></td>
+                  <td>نسبة الظهور</td>
+                  <td>Competitive Analysis</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>6.5 نموذج قياس العائد على الاتصال (ROC - Return on Communication)</h3>
+        <div class="subcard">
+          <p><b>الصيغة:</b> ROC = (الأثر المالي – التكلفة) ÷ التكلفة</p>
+          <p><b>مثال:</b> حملة تكلفت 100,000 ريال أدت لزيادة مبيعات بقيمة 350,000 ريال</p>
+          <p>ROC = 250%</p>
+          <div class="diagram">
+[ Inputs ] → [ Communication Activities ] → [ Outcomes ] → 
+[ Business Impact ] → [ ROC ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>6.6 Key Takeaways – ملخص الوحدة السادسة</h3>
+        <div class="subcard">
+          <ul>
+            <li>القياس هو العمود الفقري للتواصل المؤسسي</li>
+            <li>يجب قياس المخرجات – النتائج – الأثر معًا</li>
+            <li>القنوات الرقمية توفر أفضل بيانات قياس</li>
+            <li>KPIs يجب أن تكون واقعية وقابلة للقياس ومرتبطة بالأهداف</li>
+            <li>الانحياز للبيانات (Data-Driven Communication) أفضل معيار للتطوير</li>
+            <li>ROC يساعد في إثبات قيمة الاتصال للإدارة العليا</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit6.png" alt="Unit 6 Infographic Placeholder">
+      </div>
+    </section>
+
+
+    <!-- UNIT 7 -->
+    <section id="unit-7" class="unit-section" data-unit="unit-7">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">7</span>
+          <span class="section-ar">استراتيجيات الاتصال المؤسسي – الإطار العام</span>
+          <span class="section-en">Corporate Communication Strategies – General Strategic Framework</span>
+        </h2>
+        <p class="subtitle">الهدف: بناء إطار استراتيجي شامل لخطط الاتصال المؤسسي عبر خمسة مكوّنات: Strategic Foundation وAudience Strategy وMessage Architecture وChannel Strategy وImplementation & Governance.</p>
+      </header>
+
+      <div class="card">
+        <h3>7.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <p>الاستراتيجية الاتصالية ليست "قائمة قنوات ومحتوى"، بل إطار قرار يربط الأساس الاستراتيجي بالرسائل والجمهور والقنوات، ثم يضمن التنفيذ المتسق عبر الحوكمة والقياس والتحسين.</p>
+          <div class="info-box">
+            <b>قاعدة CMI الامتحانية:</b> الإجابة القوية تُظهر التسلسل: Foundation → Audience → Messages → Channels → Governance، وليس "اختيار قناة" بمعزل عن الهدف.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.2 مفهوم استراتيجية الاتصال المؤسسي: CMI تعريف</h3>
+        <div class="subcard">
+          <p>استراتيجية الاتصال المؤسسي (Corporate Communication Strategy) هي إطار منهجي يحدد كيف تخطط المنظمة رسائلها وتنسقها وتنفذها عبر القنوات المناسبة، وتضمن الحوكمة والاتساق، وتقيس الأثر بما يخدم الأهداف الاستراتيجية.</p>
+          <div class="info-box">
+            <b>Trap:</b> حصر الاستراتيجية في "حملات/منشورات" دون ربط بالأساس الاستراتيجي والحوكمة.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.3 الإطار العام لاستراتيجية الاتصال (The General Corporate Communication Strategic Framework)</h3>
+        <div class="subcard">
+          <h4>مكوّنات الإطار:</h4>
+          <ul>
+            <li><b>Strategic Foundation</b> – الأساس الاستراتيجي</li>
+            <li><b>Audience Strategy</b> – استراتيجية الجمهور</li>
+            <li><b>Message Architecture</b> – بنية الرسائل</li>
+            <li><b>Channel Strategy</b> – استراتيجية القنوات</li>
+            <li><b>Implementation & Governance</b> – التنفيذ والحوكمة</li>
+          </ul>
+          <div class="diagram">
+[ Strategic Foundation ]
+          ↓
+[ Audience Strategy ]
+          ↓
+[ Message Architecture ]
+          ↓
+[ Channel Strategy ]
+          ↓
+[ Implementation & Governance ]
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.4 Strategic Foundation – الأساس الاستراتيجي</h3>
+        <div class="subcard">
+          <h4>العناصر:</h4>
+          <ul>
+            <li><b>Vision</b> – الرؤية</li>
+            <li><b>Mission</b> – الرسالة</li>
+            <li><b>Values</b> – القيم</li>
+            <li><b>الأهداف الاستراتيجية</b> (Strategic Objectives)</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>العنصر</th>
+                  <th>سؤال يضبطه</th>
+                  <th>أثره على الاتصال</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Vision</b></td>
+                  <td>إلى أين نتجه؟</td>
+                  <td>يوجه "السرد" بعيد المدى والوعود الكبرى</td>
+                </tr>
+                <tr>
+                  <td><b>Mission</b></td>
+                  <td>لماذا نوجد؟</td>
+                  <td>يضبط الغرض الاتصالي ويمنع تشتيت الرسائل</td>
+                </tr>
+                <tr>
+                  <td><b>Values</b></td>
+                  <td>كيف نتصرف؟</td>
+                  <td>يضبط النبرة والأسلوب والتوقعات السلوكية</td>
+                </tr>
+                <tr>
+                  <td><b>Strategic Objectives</b></td>
+                  <td>ما الذي نريد تحقيقه؟</td>
+                  <td>يحّول الاتصال إلى أداة تنفيذ (Execution)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-box">
+            <b>Trap:</b> صياغة رسائل ممتازة لكنها لا تتصل بالرؤية/الأهداف → تُعد "نشاطًا" لا "استراتيجية".
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.5 Audience Strategy – استراتيجية الجمهور</h3>
+        <div class="subcard">
+          <h4>المكوّنات:</h4>
+          <ul>
+            <li><b>Segmentation</b> – التقسيم</li>
+            <li><b>Targeting</b> – التحديد</li>
+            <li><b>Personalization</b> – التخصيص</li>
+          </ul>
+          <h4>أنواع الجمهور:</h4>
+          <ul>
+            <li><b>Internal</b> – داخلي</li>
+            <li><b>External</b> – خارجي</li>
+            <li><b>Partners</b> – شركاء</li>
+            <li><b>Regulators</b> – جهات حكومية/تنظيمية</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الفئة</th>
+                  <th>ماذا يهمها عادةً؟</th>
+                  <th>مؤشر نجاح شائع (Exam-safe)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Internal</b></td>
+                  <td>وضوح/تمكين/ثقة/التزام</td>
+                  <td>فهم السياسة + انخفاض أخطاء سوء الفهم</td>
+                </tr>
+                <tr>
+                  <td><b>External</b></td>
+                  <td>ثقة/جودة/صورة ذهنية</td>
+                  <td>تحسن نبرة التغطية + انخفاض الشكاوى</td>
+                </tr>
+                <tr>
+                  <td><b>Partners</b></td>
+                  <td>تنسيق/توقعات/تسليم</td>
+                  <td>انخفاض التعارض + سرعة حل القضايا</td>
+                </tr>
+                <tr>
+                  <td><b>Regulators</b></td>
+                  <td>امتثال/شفافية/موثوقية</td>
+                  <td>التزام المتطلبات + تقليل المخالفات</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-box">
+            <b>قاعدة:</b> "رسالة واحدة للجميع" تُضعف التأثير؛ التخصيص مبني على اختلاف الاهتمامات والمخاطر.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.6 Message Architecture – بنية الرسائل الاتصالية</h3>
+        <div class="subcard">
+          <h4>المكوّنات:</h4>
+          <ul>
+            <li><b>Umbrella Message</b> – الرسالة الرئيسية (الفكرة الجامعة)</li>
+            <li><b>Supporting Messages</b> – الرسائل الداعمة (حسب الجمهور)</li>
+            <li><b>Proof Points</b> – الأدلة والبراهين</li>
+            <li><b>CTA</b> – الدعوة للإجراء</li>
+          </ul>
+          <div class="diagram">
+             [ Umbrella Message ]
+        ┌──────────┬──────────┬──────────┐
+        │ Supporting │ Supporting │ Supporting │
+        │ Messages   │ Messages   │ Messages   │
+        └─────┬──────┴─────┬──────┴─────┬──────┘
+              │            │            │
+        [ Proof Points ] [ Proof Points ] [ Proof Points ]
+                    ↓
+                 [ CTA ]
+          </div>
+          <div class="info-box">
+            <b>Trap:</b> جعل "Proof Points" مجرد رأي أو عبارات عامة. الصحيح: أرقام/أمثلة/حقائق قابلة للتحقق.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.7 Channel Strategy – استراتيجية اختيار القنوات</h3>
+        <div class="subcard">
+          <h4>عوامل الاختيار:</h4>
+          <ul>
+            <li>نوع الجمهور</li>
+            <li>السرعة المطلوبة</li>
+            <li>طبيعة الرسالة (حساسة/معقدة/توعوية…)</li>
+            <li>تفضيلات التواصل</li>
+            <li>ميزانية الاتصال</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>نوع الرسالة</th>
+                  <th>قنوات مناسبة</th>
+                  <th>لماذا؟ (Decision Rule)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>حساسة</b></td>
+                  <td>Email رسمي / بوابة داخلية / لقاء موثق</td>
+                  <td>توازن بين الدقة + التوثيق + تقليل الالتباس</td>
+                </tr>
+                <tr>
+                  <td><b>عاجلة</b></td>
+                  <td>رسالة قصيرة عبر قناة سريعة + توثيق لاحق</td>
+                  <td>الوصول السريع مع ضبط الرسالة لتجنب إشاعة</td>
+                </tr>
+                <tr>
+                  <td><b>معقدة</b></td>
+                  <td>جلسة شرح + FAQ + مرجع مكتوب</td>
+                  <td>رفع Clarity وتقليل سوء الفهم</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-box">
+            <b>Trap:</b> اختيار قناة سريعة لمحتوى معقد ثم لوم الجمهور على عدم الفهم.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.8 Integrated Communication Strategy – التكامل الاتصالي</h3>
+        <div class="subcard">
+          <h4>المعنى:</h4>
+          <p>الاتصال الداخلي والخارجي يعملان كسرد واحد متّسق؛ أي تناقض بينهما يضر الثقة والصورة الذهنية.</p>
+          <div class="diagram">
+[ Internal Comms ]  ⇆  [ External Comms ]
+        │                   │
+        └─────── [ Unified Narrative ] ───────┘
+          </div>
+          <div class="info-box">
+            <b>قاعدة:</b> الاتساق (Consistency) هو "الحد الأدنى" للتكامل، ثم يأتي التخصيص لكل فئة دون تناقض.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.9 Communication Governance – الحوكمة الاتصالية</h3>
+        <div class="subcard">
+          <h4>المكوّنات:</h4>
+          <ul>
+            <li><b>Communication Policies</b> – سياسات الاتصال</li>
+            <li><b>Approval Workflow</b> – إجراءات/مسارات الموافقة</li>
+            <li><b>Style Guide</b> – دليل الأسلوب</li>
+            <li><b>Brand Guidelines</b> – دليل الهوية البصرية</li>
+            <li>ضوابط الرد في السوشيال ميديا (Social Response Rules)</li>
+            <li>بروتوكولات الأزمات (Crisis Protocols)</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المستند</th>
+                  <th>ماذا يضبط؟</th>
+                  <th>خطأ شائع (Trap)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Policies</td>
+                  <td>الصلاحيات وما يُقال ومتى ولمَن</td>
+                  <td>اعتبارها "منع" بدل "توحيد قرار وتقليل مخاطر"</td>
+                </tr>
+                <tr>
+                  <td>Approval Workflow</td>
+                  <td>مراجعة واعتماد قبل النشر</td>
+                  <td>تجاوز الموافقة بحجة السرعة</td>
+                </tr>
+                <tr>
+                  <td>Style Guide</td>
+                  <td>نبرة/لغة/مصطلحات/قوالب</td>
+                  <td>تركيز على الشكل وإهمال الدقة</td>
+                </tr>
+                <tr>
+                  <td>Brand Guidelines</td>
+                  <td>اتساق الهوية البصرية</td>
+                  <td>خلط هوية غير معتمدة داخل التواصل الرسمي</td>
+                </tr>
+                <tr>
+                  <td>Social Response Rules</td>
+                  <td>حدود الرد/التصعيد/الحذف</td>
+                  <td>ردود عاطفية أو غير موثقة</td>
+                </tr>
+                <tr>
+                  <td>Crisis Protocols</td>
+                  <td>مسارات الأزمة ووقت الاستجابة</td>
+                  <td>تأخير التصعيد حتى تتضخم الأزمة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-box">
+            <b>قاعدة:</b> الحوكمة ليست "بيروقراطية"؛ هي تقليل تضارب الرسائل وتقليل المخاطر.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.10 Communication Strategy Canvas – نموذج تنفيذي</h3>
+        <div class="subcard">
+          <h4>حقول النموذج:</h4>
+          <ul>
+            <li>الهدف الاستراتيجي</li>
+            <li>الجمهور</li>
+            <li>الرسائل</li>
+            <li>القنوات</li>
+            <li>الجدول الزمني</li>
+            <li>KPIs</li>
+            <li>المسؤوليات</li>
+          </ul>
+          <div class="info-box">
+            <b>قاعدة:</b> Canvas يحوّل الإطار إلى خطة تنفيذ: "هدف + جمهور + رسالة + قناة + زمن + قياس + مالك".
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.11 Best Practices – استراتيجيات اتصال فعّالة</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>Consistency</b> – الاتساق</li>
+            <li><b>Audience-first</b> – الانطلاق من الجمهور</li>
+            <li><b>Response Speed</b> – سرعة الاستجابة</li>
+            <li><b>Data-driven</b> – الاعتماد على البيانات</li>
+            <li><b>Engagement vs. Broadcasting</b> – تفاعل مقابل بث</li>
+            <li><b>Leadership Communication</b> – التواصل القيادي</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Broadcasting</th>
+                  <th>Engagement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>اتجاه واحد</td>
+                  <td>اتجاهين (حوار/استماع)</td>
+                </tr>
+                <tr>
+                  <td>وصول دون فهم مضمون</td>
+                  <td>فهم + تفاعل + تحسين</td>
+                </tr>
+                <tr>
+                  <td>رسائل عامة</td>
+                  <td>رسائل مخصصة مع ردود</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.12 Execution Cycle – نموذج دورة تنفيذ الاستراتيجية</h3>
+        <div class="subcard">
+          <ol>
+            <li><b>Planning</b> – التخطيط</li>
+            <li><b>Content Development</b> – تطوير المحتوى</li>
+            <li><b>Channel Activation</b> – تفعيل القنوات</li>
+            <li><b>Engagement Monitoring</b> – مراقبة التفاعل</li>
+            <li><b>Impact Measurement</b> – قياس الأثر</li>
+            <li><b>Optimization</b> – التحسين</li>
+          </ol>
+          <div class="info-box">
+            <b>قاعدة:</b> الدورة لا تنتهي عند النشر؛ تنتهي عند القياس والتحسين.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>7.13 Key Takeaways – ملخص الوحدة السابعة</h3>
+        <div class="subcard">
+          <ul>
+            <li>الاستراتيجية الاتصالية إطار قرار يبدأ من الأساس الاستراتيجي</li>
+            <li>الجمهور يُقسّم ويُستهدف ثم تُبنى الرسائل وفق Message Architecture</li>
+            <li>اختيار القناة قرار مبني على طبيعة الرسالة والجمهور والسرعة والميزانية</li>
+            <li>الحوكمة تمنع تضارب الرسائل وتقلل المخاطر وتضبط الموافقات</li>
+            <li>الدورة التنفيذية تنتهي بالقياس والتحسين وليس بالنشر</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit7.png" alt="Unit 7 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 8 -->
+    <section id="unit-8" class="unit-section" data-unit="unit-8">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">8</span>
+          <span class="section-ar">تطوير أهداف الاتصال المؤسسي</span>
+          <span class="section-en">Developing Corporate Communication Objectives – SMART Goals</span>
+        </h2>
+        <p class="subtitle">الهدف: تحويل الأهداف العامة إلى أهداف اتصال ذكية (SMART)، مرتبطة بالرؤية والرسالة، وقابلة للقياس عبر KPIs واضحة.</p>
+      </header>
+
+      <div class="card">
+        <h3>8.1 مقدمة الوحدة (Unit Introduction)</h3>
+        <div class="subcard">
+          <p>تركز هذه الوحدة على أهمية صياغة أهداف الاتصال المؤسسي بشكل واضح وقابل للقياس، بما يضمن تحويل الاتصال من نشاط وصفي إلى أداة تنفيذ استراتيجية.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.2 لماذا نحتاج أهدافًا اتصالية؟</h3>
+        <div class="subcard">
+          <ul>
+            <li>توجيه الرسائل والأنشطة الاتصالية</li>
+            <li>ربط الاتصال بالأهداف المؤسسية</li>
+            <li>تمكين القياس والمساءلة</li>
+            <li>منع العشوائية والاجتهاد غير المنضبط</li>
+          </ul>
+          <div class="info-box">
+            <b>Trap:</b> تنفيذ أنشطة اتصال كثيرة دون هدف واضح لا يُعد استراتيجية.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.3 نموذج SMART لتطوير الأهداف الاتصالية</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>S – Specific</b> محدد</li>
+            <li><b>M – Measurable</b> قابل للقياس</li>
+            <li><b>A – Achievable</b> قابل للتحقيق</li>
+            <li><b>R – Relevant</b> مرتبط بالأهداف المؤسسية</li>
+            <li><b>T – Time-bound</b> مرتبط بإطار زمني</li>
+          </ul>
+          <div class="diagram">
+S → M → A → R → T
+هدف اتصالي ذكي وقابل للتنفيذ
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.4 تحويل الهدف العام إلى هدف SMART</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>هدف غير ذكي</th>
+                  <th>هدف SMART</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>تحسين التواصل الداخلي</td>
+                  <td>رفع نسبة فهم الموظفين للسياسات الجديدة إلى 80% خلال 6 أشهر</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.5 أنواع أهداف الاتصال المؤسسي</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>Awareness</b> – الوعي</li>
+            <li><b>Understanding</b> – الفهم</li>
+            <li><b>Engagement</b> – التفاعل</li>
+            <li><b>Behavior Change</b> – تغيير السلوك</li>
+            <li><b>Reputation</b> – السمعة</li>
+            <li><b>Relationship</b> – العلاقة</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>النوع</th>
+                  <th>مثال</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Awareness</td>
+                  <td>رفع الوعي بخدمة جديدة</td>
+                </tr>
+                <tr>
+                  <td>Behavior</td>
+                  <td>تقليل مخالفات السلامة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.6 ربط أهداف الاتصال بالرؤية والرسالة (Golden Thread)</h3>
+        <div class="subcard">
+          <div class="diagram">
+Vision → Mission → Strategic Objective → Communication Objective
+          </div>
+          <div class="info-box">
+            <b>قاعدة:</b> أي هدف اتصالي غير مرتبط بالرؤية يُعد هدفًا تشغيليًا لا استراتيجيًا.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.7 كيفية كتابة هدف اتصالي استراتيجي (Step-by-Step)</h3>
+        <div class="subcard">
+          <ol>
+            <li>تحديد المشكلة الاتصالية</li>
+            <li>تحديد الجمهور</li>
+            <li>تحديد النتيجة المرغوبة</li>
+            <li>تحويلها إلى هدف SMART</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.8 صياغة KPIs لأهداف الاتصال</h3>
+        <div class="subcard">
+          <ul>
+            <li><b>Primary KPI</b> – المقياس الرئيسي</li>
+            <li><b>Secondary KPIs</b> – مقاييس داعمة</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الهدف</th>
+                  <th>Primary KPI</th>
+                  <th>Secondary KPIs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>رفع الوعي</td>
+                  <td>Reach</td>
+                  <td>Recall / Mentions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.9 أخطاء شائعة في إعداد أهداف الاتصال</h3>
+        <div class="subcard">
+          <div class="diagram">
+Outputs ≠ Outcomes
+النشاط ≠ الأثر
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>8.10 Key Takeaways – ملخص الوحدة الثامنة</h3>
+        <div class="subcard">
+          <ul>
+            <li>الأهداف الذكية أساس القياس والمساءلة</li>
+            <li>SMART يربط الاتصال بالتنفيذ</li>
+            <li>KPIs تترجم الهدف إلى أرقام</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit8.png" alt="Unit 8 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 9 -->
+    <section id="unit-9" class="unit-section" data-unit="unit-9">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">9</span>
+          <span class="section-ar">تطوير خطة الاتصال الداخلي المؤسسي</span>
+          <span class="section-en">Developing the Internal Corporate Communication Plan</span>
+        </h2>
+        <p class="subtitle">الهدف: تصميم وتنفيذ خطة اتصال داخلي متكاملة تدعم الأداء، التفاعل، والمواءمة المؤسسية.</p>
+      </header>
+
+      <div class="card">
+        <h3>9.1 مقدمة الوحدة</h3>
+        <div class="subcard">
+          <p>تركّز هذه الوحدة على بناء خطة اتصال داخلي منظمة، تنطلق من تحليل الواقع الداخلي وتنتهي بالقياس والتحسين المستمر.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.2 مكونات خطة الاتصال الداخلي</h3>
+        <div class="subcard">
+          <ul>
+            <li>Internal Audit – تحليل الوضع الحالي</li>
+            <li>Internal Segmentation – تحديد الجمهور الداخلي</li>
+            <li>Key Internal Messages – الرسائل الأساسية</li>
+            <li>Channels Mix – اختيار القنوات</li>
+            <li>Timeline – الجدول الزمني والأنشطة</li>
+            <li>Roles & Ownership – توزيع الأدوار</li>
+            <li>Measurement Plan – خطة القياس</li>
+          </ul>
+          <div class="diagram">
+Assessment → Segmentation → Messages → Channels → Execution → Measurement → Improvement
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.3 تحليل الاحتياجات الداخلية</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>العنصر</th>
+                  <th>الوصف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>القنوات الحالية</td>
+                  <td>ما المستخدم فعليًا</td>
+                </tr>
+                <tr>
+                  <td>الفجوات</td>
+                  <td>ما لا يصل للموظفين</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.4 تقسيم الجمهور الداخلي</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الفئة</th>
+                  <th>الاحتياج الاتصالي</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>الإدارة العليا</td>
+                  <td>قرارات استراتيجية</td>
+                </tr>
+                <tr>
+                  <td>الموظفون</td>
+                  <td>وضوح الدور والتوقعات</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.5 الرسائل الأساسية الداخلية</h3>
+        <div class="subcard">
+          <div class="diagram">
+Umbrella Message
+ ├─ Supporting Message
+ └─ Proof Points
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.6 استراتيجية القنوات الداخلية</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>القناة</th>
+                  <th>الميزة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Email</td>
+                  <td>رسائل رسمية</td>
+                </tr>
+                <tr>
+                  <td>Townhall</td>
+                  <td>تفاعل مباشر</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.7 الجدول الزمني والأنشطة</h3>
+        <div class="subcard">
+          <div class="diagram">
+Month 1 → Launch
+Month 2 → Engagement
+Month 3 → Review
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.8 توزيع الأدوار والمسؤوليات</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الدور</th>
+                  <th>المسؤولية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HR</td>
+                  <td>المواءمة والسياسات</td>
+                </tr>
+                <tr>
+                  <td>Communication</td>
+                  <td>التنفيذ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.9 قياس الاتصال الداخلي</h3>
+        <div class="subcard">
+          <ul>
+            <li>Reach Metrics</li>
+            <li>Engagement Metrics</li>
+            <li>Impact Metrics</li>
+          </ul>
+          <div class="diagram">
+Measure → Analyze → Improve
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.10 الاتصال القيادي</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الخاصية</th>
+                  <th>الوصف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>الوضوح</td>
+                  <td>رسائل مباشرة</td>
+                </tr>
+                <tr>
+                  <td>الاستمرارية</td>
+                  <td>تواصل منتظم</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>9.11 Key Takeaways – ملخص الوحدة التاسعة</h3>
+        <div class="subcard">
+          <ul>
+            <li>الاتصال الداخلي أساس المواءمة المؤسسية</li>
+            <li>الخطة الواضحة تقلل الإشاعات</li>
+            <li>القياس يحسّن الاستدامة</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit9.png" alt="Unit 9 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 10 -->
+    <section id="unit-10" class="unit-section" data-unit="unit-10">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">10</span>
+          <span class="section-ar">عناصر استراتيجية تطوير الاتصال الداخلي المؤسسي</span>
+          <span class="section-en">Internal Corporate Communication Development Strategy Components</span>
+        </h2>
+        <p class="subtitle">الهدف: بناء بيئة اتصال داخلي متطورة تدعم الثقة، المشاركة، القيادة، والتحسين المستمر.</p>
+      </header>
+
+      <div class="card">
+        <h3>10.1 مقدمة الوحدة</h3>
+        <div class="subcard">
+          <p>تركّز هذه الوحدة على العناصر التطويرية التي ترفع نضج الاتصال الداخلي من مستوى تشغيلي إلى مستوى استراتيجي مستدام.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.2 الركائز الأساسية لاستراتيجية التطوير الداخلي</h3>
+        <div class="subcard">
+          <ul>
+            <li>Transparency & Trust – الشفافية والمصداقية</li>
+            <li>Channels Modernization – تطوير القنوات</li>
+            <li>Engagement Culture – ثقافة المشاركة</li>
+            <li>Leadership Communication – التواصل القيادي</li>
+            <li>Digital Workplace – بيئة العمل الرقمية</li>
+            <li>Continuous Improvement – التحسين المستمر</li>
+          </ul>
+          <div class="diagram">
+Trust → Channels → Engagement → Leadership → Digital → Improvement
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.3 تعزيز ثقافة الشفافية والنزاهة</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المستوى</th>
+                  <th>الوصف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>استراتيجي</td>
+                  <td>وضوح القرارات الكبرى</td>
+                </tr>
+                <tr>
+                  <td>تشغيلي</td>
+                  <td>شفافية الإجراءات</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.4 تطوير القنوات الداخلية</h3>
+        <div class="subcard">
+          <ul>
+            <li>تحديث الإنترانت</li>
+            <li>استخدام قنوات متعددة</li>
+            <li>Chefs' Table / CEO Corners</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>تقليدية</th>
+                  <th>حديثة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Email</td>
+                  <td>Digital Platforms</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.5 تعزيز ثقافة المشاركة</h3>
+        <div class="subcard">
+          <div class="diagram">
+Inform → Consult → Involve → Empower
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.6 التواصل القيادي</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>النوع</th>
+                  <th>الغرض</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>رؤيوي</td>
+                  <td>إلهام وتوجيه</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.7 استراتيجية بيئة العمل الرقمية</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الأداة</th>
+                  <th>الدور</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Collaboration Tools</td>
+                  <td>تسهيل العمل</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="diagram">
+Adoption → Usage → Optimization
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.8 كسر الصوامع التنظيمية (Silo Busting)</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الأثر</th>
+                  <th>النتيجة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ضعف التنسيق</td>
+                  <td>ازدواجية العمل</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.9 برامج التطوير الداخلي</h3>
+        <div class="subcard">
+          <ul>
+            <li>Communication Ambassadors Program</li>
+            <li>Storytelling for Leaders</li>
+            <li>EQ + CQ in Communication</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.10 إطار التحسين المستمر</h3>
+        <div class="subcard">
+          <div class="diagram">
+Measure → Learn → Improve → Sustain
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>10.11 Key Takeaways – ملخص الوحدة العاشرة</h3>
+        <div class="subcard">
+          <ul>
+            <li>التطوير الداخلي عملية مستمرة</li>
+            <li>الثقة والمشاركة أساس الاستدامة</li>
+            <li>القيادة الرقمية تضاعف الأثر</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit10.png" alt="Unit 10 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 11 -->
+    <section id="unit-11" class="unit-section" data-unit="unit-11">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">11</span>
+          <span class="section-ar">تطوير خطة الاتصال الخارجي المؤسسي</span>
+          <span class="section-en">Developing the External Corporate Communication Plan</span>
+        </h2>
+        <p class="subtitle">الهدف: بناء خطة اتصال خارجي متكاملة تدير السمعة، أصحاب المصلحة، الحملات، والأزمات بفعالية.</p>
+      </header>
+
+      <div class="card">
+        <h3>11.1 مقدمة الوحدة</h3>
+        <div class="subcard">
+          <p>تتناول هذه الوحدة كيفية تصميم وتنفيذ خطة اتصال خارجي تدعم السمعة المؤسسية وتحقق الاتساق مع الأهداف الاستراتيجية.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.2 مكونات خطة الاتصال الخارجي</h3>
+        <div class="subcard">
+          <ul>
+            <li>External Audit – تحليل الوضع الحالي</li>
+            <li>Stakeholder Mapping – تحليل الجمهور الخارجي</li>
+            <li>Key Messages – تحديد الرسائل الرئيسية</li>
+            <li>Channels Strategy – اختيار القنوات</li>
+            <li>Content Plan – خطة المحتوى</li>
+            <li>Campaigns – الحملات الاتصالية</li>
+            <li>Reputation Management – إدارة السمعة</li>
+            <li>KPIs – القياس والتقييم</li>
+          </ul>
+          <div class="diagram">
+Audit → Stakeholders → Messages → Channels → Content → Campaigns → Reputation → Measurement
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.3 تحليل أصحاب المصلحة (Stakeholder Analysis)</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>القوة (Power)</th>
+                  <th>الاهتمام (Interest)</th>
+                  <th>النهج</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>عالٍ</td>
+                  <td>عالٍ</td>
+                  <td>إدارة قريبة</td>
+                </tr>
+                <tr>
+                  <td>عالٍ</td>
+                  <td>منخفض</td>
+                  <td>إبقاء الرضا</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.4 الرسائل الرئيسية الخارجية</h3>
+        <div class="subcard">
+          <div class="diagram">
+Umbrella Message
+ ├─ Supporting Messages
+ └─ Proof Points
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.5 استراتيجية القنوات الخارجية</h3>
+        <div class="subcard">
+          <ul>
+            <li>Digital Channels</li>
+            <li>Media Channels</li>
+            <li>Government Communication</li>
+            <li>CSR Channels</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الجمهور</th>
+                  <th>القناة الأنسب</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>عملاء</td>
+                  <td>Digital</td>
+                </tr>
+                <tr>
+                  <td>جهات حكومية</td>
+                  <td>Official Channels</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.6 استراتيجية المحتوى</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>نوع المحتوى</th>
+                  <th>الغرض</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>إخباري</td>
+                  <td>رفع الوعي</td>
+                </tr>
+                <tr>
+                  <td>تفاعلي</td>
+                  <td>بناء الثقة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.7 الحملات الاتصالية المتكاملة</h3>
+        <div class="subcard">
+          <ul>
+            <li>PESO Model: Paid / Earned / Shared / Owned</li>
+          </ul>
+          <div class="diagram">
+Paid + Earned + Shared + Owned → Integrated Impact
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.8 إدارة السمعة المؤسسية</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>المؤشر</th>
+                  <th>الدلالة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Trust Index</td>
+                  <td>مستوى الثقة</td>
+                </tr>
+                <tr>
+                  <td>Sentiment</td>
+                  <td>نبرة التغطية</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.9 الاتصال في الأزمات الخارجية</h3>
+        <div class="subcard">
+          <div class="diagram">
+Prepare → Respond → Recover → Learn
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.10 مؤشرات قياس الاتصال الخارجي</h3>
+        <div class="subcard">
+          <ul>
+            <li>Awareness Metrics</li>
+            <li>Engagement Metrics</li>
+            <li>Reputation Metrics</li>
+            <li>Conversion Metrics</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>11.11 Key Takeaways – ملخص الوحدة الحادية عشرة</h3>
+        <div class="subcard">
+          <ul>
+            <li>الاتصال الخارجي هو واجهة السمعة</li>
+            <li>إدارة أصحاب المصلحة تقلل المخاطر</li>
+            <li>القياس يحوّل الحملات إلى قيمة</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit11.png" alt="Unit 11 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 12 -->
+    <section id="unit-12" class="unit-section" data-unit="unit-12">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">12</span>
+          <span class="section-ar">عناصر استراتيجية تطوير الاتصال الخارجي المؤسسي</span>
+          <span class="section-en">External Communication Development Strategy Components</span>
+        </h2>
+        <p class="subtitle">الهدف: رفع نضج الاتصال الخارجي عبر تطوير السمعة، العلاقات الإعلامية، الشراكات، وإدارة الشائعات والقيادة الفكرية.</p>
+      </header>
+
+      <div class="card">
+        <h3>12.1 مقدمة الوحدة</h3>
+        <div class="subcard">
+          <p>تُركّز هذه الوحدة على مكوّنات التطوير المتقدم للاتصال الخارجي بما يضمن الاستدامة والتأثير طويل المدى.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.2 الركائز الرئيسية لاستراتيجية التطوير الخارجي</h3>
+        <div class="subcard">
+          <ul>
+            <li>Reputation Management – إدارة السمعة</li>
+            <li>Media Relations Development – تطوير العلاقات الإعلامية</li>
+            <li>Strategic Partnerships – الشراكات والتحالفات</li>
+            <li>Rumor Control – إدارة الشائعات والمعلومات المضللة</li>
+            <li>Social Media Strategy – استراتيجية التواصل الاجتماعي</li>
+            <li>Thought Leadership Development – بناء السمعة الفكرية</li>
+          </ul>
+          <div class="diagram">
+Reputation → Media → Partnerships → Rumor Control → Social → Thought Leadership
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.3 إدارة السمعة المؤسسية</h3>
+        <div class="subcard">
+          <ul>
+            <li>Proactive Measures – إجراءات استباقية</li>
+            <li>Monitoring – الرصد المستمر</li>
+            <li>Qualitative Analysis – التحليل النوعي</li>
+            <li>Recovery Plans – خطط استعادة السمعة</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الأداة</th>
+                  <th>الاستخدام</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Media Monitoring</td>
+                  <td>متابعة التغطية</td>
+                </tr>
+                <tr>
+                  <td>Sentiment Analysis</td>
+                  <td>تحليل النبرة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.4 تطوير العلاقات الإعلامية</h3>
+        <div class="subcard">
+          <ul>
+            <li>بناء علاقات طويلة المدى مع الإعلام</li>
+            <li>جاهزية الرسائل والمتحدثين</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Media Kit</th>
+                  <th>المحتوى</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Press Release</td>
+                  <td>بيانات رسمية</td>
+                </tr>
+                <tr>
+                  <td>Fact Sheet</td>
+                  <td>حقائق سريعة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.5 تطوير الشراكات والتحالفات</h3>
+        <div class="subcard">
+          <ul>
+            <li>تحقيق أهداف اتصال مشتركة</li>
+            <li>تعزيز المصداقية والانتشار</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>النوع</th>
+                  <th>الوصف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Strategic</td>
+                  <td>طويلة المدى</td>
+                </tr>
+                <tr>
+                  <td>Tactical</td>
+                  <td>قصيرة المدى</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.6 إدارة الشائعات والمعلومات المضللة</h3>
+        <div class="subcard">
+          <ul>
+            <li>الرصد المبكر</li>
+            <li>الرد السريع</li>
+            <li>التصحيح الرسمي</li>
+          </ul>
+          <div class="diagram">
+Detect → Verify → Respond → Monitor
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.7 استراتيجية متقدمة للتواصل الاجتماعي</h3>
+        <div class="subcard">
+          <ul>
+            <li>Content Pillars</li>
+            <li>Channel Matrix</li>
+            <li>Community Management</li>
+            <li>Identifying Influencers</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>نوع المحتوى</th>
+                  <th>الهدف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Interactive</td>
+                  <td>رفع التفاعل</td>
+                </tr>
+                <tr>
+                  <td>Educational</td>
+                  <td>بناء الثقة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.8 بناء السمعة الفكرية (Thought Leadership)</h3>
+        <div class="subcard">
+          <ul>
+            <li>محتوى تحليلي عميق</li>
+            <li>مشاركة الخبراء</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>النوع</th>
+                  <th>المثال</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>White Papers</td>
+                  <td>تقارير تحليلية</td>
+                </tr>
+                <tr>
+                  <td>Op-Eds</td>
+                  <td>مقالات رأي</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12.9 Key Takeaways – ملخص الوحدة الثانية عشرة</h3>
+        <div class="subcard">
+          <ul>
+            <li>التطوير الخارجي استثمار طويل المدى</li>
+            <li>إدارة السمعة عملية مستمرة</li>
+            <li>القيادة الفكرية تعزز المصداقية</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit12.png" alt="Unit 12 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- UNIT 13 -->
+    <section id="unit-13" class="unit-section" data-unit="unit-13">
+      <header class="unit-header">
+        <h2 class="section-title">
+          <span class="section-number">13</span>
+          <span class="section-ar">تطبيق وتقييم خطة الاتصال المؤسسي</span>
+          <span class="section-en">Implementation & Evaluation of the Corporate Communication Plan</span>
+        </h2>
+        <p class="subtitle">الهدف: تحويل الخطة الاتصالية إلى تنفيذ منضبط، وقياس الأداء، وإغلاق الحلقة بالتحسين المستمر وإدارة المخاطر.</p>
+      </header>
+
+      <div class="card">
+        <h3>13.1 مقدمة الوحدة</h3>
+        <div class="subcard">
+          <p>تغطي هذه الوحدة مراحل تنفيذ الخطة الاتصالية، من بناء فريق التنفيذ وجدولة الأنشطة، إلى التفعيل، القياس، التقييم، وإدارة المخاطر.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.2 مراحل تطبيق خطة الاتصال المؤسسي</h3>
+        <div class="subcard">
+          <div class="diagram">
+Plan → Build → Execute → Monitor → Evaluate → Improve
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.3 بناء فريق التنفيذ (Implementation Team)</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الدور</th>
+                  <th>المسؤوليات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Project Lead</td>
+                  <td>الإشراف العام والتنسيق</td>
+                </tr>
+                <tr>
+                  <td>Content Lead</td>
+                  <td>تجهيز المحتوى والرسائل</td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>القياس والتحليل</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.4 الجدولة الزمنية لتنفيذ الخطة</h3>
+        <div class="subcard">
+          <div class="diagram">
+Month 1: Preparation
+Month 2: Activation
+Month 3: Evaluation
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.5 تجهيز المحتوى والرسائل</h3>
+        <div class="subcard">
+          <ul>
+            <li>توحيد الرسائل الأساسية</li>
+            <li>مراجعة الجودة والاعتماد</li>
+            <li>مواءمة المحتوى مع القنوات</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.6 تشغيل القنوات الاتصالية</h3>
+        <div class="subcard">
+          <div class="diagram">
+Approve → Publish → Amplify → Engage
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.7 الرصد والتحليل (Monitoring & Analytics)</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الأداة</th>
+                  <th>الغرض</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dashboards</td>
+                  <td>متابعة الأداء اللحظي</td>
+                </tr>
+                <tr>
+                  <td>Analytics Tools</td>
+                  <td>تحليل الاتجاهات</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.8 تقييم الأداء الاتصالي</h3>
+        <div class="subcard">
+          <div class="diagram">
+Outputs → Outcomes → Impact
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.9 تقرير أداء الخطة الاتصالية</h3>
+        <div class="subcard">
+          <p>تقرير مختصر يشمل: الأهداف، المؤشرات، النتائج، الدروس المستفادة.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.10 دورة التحسين المستمر</h3>
+        <div class="subcard">
+          <div class="diagram">
+Measure → Learn → Adjust → Sustain
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.11 إدارة المخاطر الاتصالية</h3>
+        <div class="subcard">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الخطر</th>
+                  <th>الاستجابة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>تأخر النشر</td>
+                  <td>خطط بديلة</td>
+                </tr>
+                <tr>
+                  <td>تشويه الرسالة</td>
+                  <td>تصحيح فوري</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>13.12 Key Takeaways – ملخص الوحدة الثالثة عشرة</h3>
+        <div class="subcard">
+          <ul>
+            <li>التنفيذ المنضبط يحمي الاستراتيجية</li>
+            <li>القياس أساس التقييم</li>
+            <li>التحسين المستمر يضمن الاستدامة</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="infographic-slot">
+        <img src="assets/unit13.png" alt="Unit 13 Infographic Placeholder">
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>تم الاعداد بواسطة</p>
+      <p>انس العضيبي</p>
+      <p>جوال : 0505530803</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+  </main>
+
+  <script>
+    // ============================================
+    // Unit Navigation System - Single Unit Display
+    // ============================================
+    
+    const unitManager = {
+      // Store last viewed unit in localStorage
+      saveLastUnit: function(unitId) {
+        localStorage.setItem('lastUnitHash', '#' + unitId);
+      },
+      
+      // Get last viewed unit from localStorage
+      getLastUnit: function() {
+        return localStorage.getItem('lastUnitHash') || '#unit-1';
+      },
+      
+      // Show specific unit and hide others
+      showUnit: function(unitId) {
+        // Hide all units
+        document.querySelectorAll('.unit-section').forEach(section => {
+          section.classList.remove('active');
+        });
+        
+        // Show target unit
+        const targetUnit = document.getElementById(unitId);
+        if (targetUnit) {
+          targetUnit.classList.add('active');
+          // Scroll to top of content
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Update navigation active state
+        this.updateNavState(unitId);
+        
+        // Save to localStorage
+        this.saveLastUnit(unitId);
+        
+        // Update URL hash
+        history.pushState(null, null, '#' + unitId);
+      },
+      
+      // Update navigation active state
+      updateNavState: function(unitId) {
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + unitId) {
+            link.classList.add('active');
+          }
+        });
+      },
+      
+      // Initialize on page load
+      init: function() {
+        const hash = window.location.hash;
+        let unitId = 'unit-1';
+        
+        if (hash && hash.startsWith('#unit-')) {
+          unitId = hash.substring(1);
+        }
+        
+        this.showUnit(unitId);
+      }
+    };
+    
+    // Handle navigation clicks
+    document.querySelectorAll('.nav-menu a[data-unit]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const unitId = this.getAttribute('data-unit');
+        unitManager.showUnit(unitId);
+      });
+    });
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function() {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#unit-')) {
+        unitManager.showUnit(hash.substring(1));
+      }
+    });
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      unitManager.init();
+    });
+  </script>
+</body>
+</html>
